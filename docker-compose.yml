@@ -9,4 +9,4 @@ services:
     ports:
      - "8080:80"
     environment:
-      - WORD_API_HOSTNAME=words
+      - WORD_API_URL=http://words:8080

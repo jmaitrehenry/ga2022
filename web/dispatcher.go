@@ -4,21 +4,17 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"math/rand"
-	"net"
 	"net/http"
 	"os"
-	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
-	wordApiHostname := os.Getenv("WORD_API_HOSTNAME")
-	if wordApiHostname == "" {
-		wordApiHostname = "localhost"
+	wordApiPortURL := os.Getenv("WORD_API_URL")
+	if wordApiPortURL == "" {
+		wordApiPortURL = "http://words"
 	}
 
-	fwd := &forwarder{wordApiHostname, 8080}
+	fwd := &forwarder{wordApiPortURL}
 	http.Handle("/words/", http.StripPrefix("/words", fwd))
 	http.Handle("/", http.FileServer(http.Dir("static")))
 
@@ -27,22 +23,14 @@ func main() {
 }
 
 type forwarder struct {
-	host string
-	port int
+	url string
 }
 
 func (f *forwarder) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	_, err := net.LookupHost(f.host)
-	if err != nil {
-		log.Println("Error", err)
-		http.Error(w, err.Error(), 500)
-		return
-	}
-
-	url := fmt.Sprintf("http://%s:%d%s", f.host, f.port, r.URL.Path)
+	url := fmt.Sprintf("%s%s", f.url, r.URL.Path)
 	log.Printf("%s Calling %s", r.URL.Path, url)
 
-	if err = copy(url, w); err != nil {
+	if err := copy(url, w); err != nil {
 		log.Println("Error", err)
 		http.Error(w, err.Error(), 500)
 		return
