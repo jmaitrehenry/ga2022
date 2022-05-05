@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  words:
+    build: words
+
+  web:
+    build: web
+    ports:
+     - "8080:80"
