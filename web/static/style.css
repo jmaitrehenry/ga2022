@@ -87,15 +87,6 @@ body {
 	margin-top: 20px;
 }
 
-.result .hostname {
-	position: absolute;
-	width: 100%;
-	left: 0;
-	bottom: 8px;
-	font-size: 0.8em;
-	height: 14px;
-}
-
 .noun {
 	background-image: url('images/lego_blue.png') !important;
 }

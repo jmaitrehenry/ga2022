@@ -17,6 +17,10 @@ nav:
     - Lab 1 - Build and push our containers to Azure Container Registry: lab-1/README.md
     - Lab 2 - Deploy our app using Azure Container Apps: lab-2/README.md
     - Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps: lab-3/README.md
+  # - Workshop Azure Kubernetes Service:
+  #   - Lab 4 - Creating a Kubernetes Cluster using Azure AKS: lab-4/README.md
+  #   - Lab 5 - Configuring an Ingress Controller using nginx and Let's Encrypt: lab-5/README.md
+  #   - Lab 6 - Deploy our application into AKS using Github Action: lab-6/README.md
 
 ## DO NOT CHANGE BELOW THIS LINE
 

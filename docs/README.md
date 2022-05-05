@@ -26,7 +26,7 @@ You can start the application using docker compose: `docker compose up -d` and t
 | [Lab 2](lab-2/README.md) | Lab 2 - Deploy our app using Azure Container Apps |
 | [Lab 3](lab-3/README.md) | Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps |
 
-<!-- | [Lab 4](lab-4/README.md) | Lab 4 - Creating a Kubernetes Cluster using Azure AKS |
+<!-- | [Lab 4](lab-4/README.md) | Lab 4 - Creating a Kubernetes Cluster using Azure Kubernetes Service (AKS) |
 | [Lab 5](lab-5/README.md) | Lab 5 - Configuring an Ingress Controller using nginx and Let's Encrypt |
 | [Lab 6](lab-6/README.md) | Lab 6 - Deploy our application into AKS using Github Action | -->
 

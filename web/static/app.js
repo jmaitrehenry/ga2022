@@ -44,6 +44,5 @@ function getWord($http, $timeout, url, callback) {
 function word(resp) {
   return {
     word: resp.data.word,
-    hostname: resp.headers()["source"]
   };
 }
