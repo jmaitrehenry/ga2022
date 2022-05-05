@@ -382,9 +382,95 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-to-the-repository" class="md-nav__link">
+    Add Github Action to the repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-azure-service-principal-for-github" class="md-nav__link">
+    Create Azure Service Principal for Github
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Azure Service Principal for Github">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-service-account" class="md-nav__link">
+    Create the service account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-access-to-acr-and-azure-container-apps" class="md-nav__link">
+    Add access to ACR and Azure Container Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-build-secret-with-our-service-principal-credentials" class="md-nav__link">
+    Add build secret with our service principal credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-for-the-web-app" class="md-nav__link">
+    Add Github Action for the web app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-for-the-words-app" class="md-nav__link">
+    Add Github Action for the words app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -417,6 +503,76 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-to-the-repository" class="md-nav__link">
+    Add Github Action to the repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-azure-service-principal-for-github" class="md-nav__link">
+    Create Azure Service Principal for Github
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Azure Service Principal for Github">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-service-account" class="md-nav__link">
+    Create the service account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-access-to-acr-and-azure-container-apps" class="md-nav__link">
+    Add access to ACR and Azure Container Apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-build-secret-with-our-service-principal-credentials" class="md-nav__link">
+    Add build secret with our service principal credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-for-the-web-app" class="md-nav__link">
+    Add Github Action for the web app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-github-action-for-the-words-app" class="md-nav__link">
+    Add Github Action for the words app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -434,6 +590,17 @@
 
 
 <h1 id="lab-3-automate-app-building-and-deployment-using-github-action-to-azure-container-apps">Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps<a class="headerlink" href="#lab-3-automate-app-building-and-deployment-using-github-action-to-azure-container-apps" title="Permanent link">&para;</a></h1>
+<h2 id="add-github-action-to-the-repository">Add Github Action to the repository<a class="headerlink" href="#add-github-action-to-the-repository" title="Permanent link">&para;</a></h2>
+<h2 id="create-azure-service-principal-for-github">Create Azure Service Principal for Github<a class="headerlink" href="#create-azure-service-principal-for-github" title="Permanent link">&para;</a></h2>
+<h3 id="create-the-service-account">Create the service account<a class="headerlink" href="#create-the-service-account" title="Permanent link">&para;</a></h3>
+<h3 id="add-access-to-acr-and-azure-container-apps">Add access to ACR and Azure Container Apps<a class="headerlink" href="#add-access-to-acr-and-azure-container-apps" title="Permanent link">&para;</a></h3>
+<h3 id="add-build-secret-with-our-service-principal-credentials">Add build secret with our service principal credentials<a class="headerlink" href="#add-build-secret-with-our-service-principal-credentials" title="Permanent link">&para;</a></h3>
+<h2 id="add-github-action-for-the-web-app">Add Github Action for the web app<a class="headerlink" href="#add-github-action-for-the-web-app" title="Permanent link">&para;</a></h2>
+<h2 id="add-github-action-for-the-words-app">Add Github Action for the words app<a class="headerlink" href="#add-github-action-for-the-words-app" title="Permanent link">&para;</a></h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We created a limited account that could interact with our docker registry and our container applications. 
+After that, we build and deployed our application only when they have some changes.</p>
+<p>You have now a full Continuous Deployment Pipeline running into Github !</p>
 
               
             </article>
