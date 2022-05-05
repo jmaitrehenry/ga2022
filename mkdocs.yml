@@ -13,7 +13,10 @@ nav:
   - Welcome:
     - About the workshop: README.md
   - Workshop:
-    - Getting Started: lab-0/README.md
+    - Pre-work - Install Docker: lab-0/README.md
+    - Lab 1 - Build and push our containers to Azure Container Registry: lab-1/README.md
+    - Lab 2 - Deploy our app using Azure Container Apps: lab-2/README.md
+    - Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps: lab-3/README.md
 
 ## DO NOT CHANGE BELOW THIS LINE
 
