@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_REGISTRY: f375a13f.azurecr.io
-      DOCKER_IMAGE_NAME_WORDS: words:1.0.3
-      DOCKER_IMAGE_NAME_WEB: web:1.0.3
+      DOCKER_IMAGE_NAME_WORDS: words:1.0.1
+      DOCKER_IMAGE_NAME_WEB: web:1.0.1
       AZURE_RESOURCE_GROUP_NAME: 064b73c3
       AZURE_APP_NAME_WORDS: b02d6766
       AZURE_APP_NAME_WEB: fbd866b2
