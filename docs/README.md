@@ -15,7 +15,7 @@ The demo app runs across two containers:
 
 ### Run the application locally
 
-You can start the application using docker compose: `docker compose up -d` and test the application inside your browser [here](http://localhost:8080).
+You can start the application using docker compose: `docker compose up -d` and test the application inside your browser on [localhost:8080](http://localhost:8080).
 
 ## Agenda
 
@@ -34,14 +34,14 @@ You can start the application using docker compose: `docker compose up -d` and t
 
 For this workshop you must have:
 
-* Docker,
-* A Github Account,
-* An Azure Account,
+* Docker
+* A Github Account
+* An Azure Account
 * [Fork the current repository inside your Github account](https://github.com/jmaitrehenry/ga2022/fork){:target="_blank"}
 
 ## Technology Used
 
-* [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/),
-* [Docker Compose](https://docs.docker.com/compose/),
-* [Github Actions](https://docs.github.com/en/actions),
-* [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/),
+* [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)
+* [Docker Compose](https://docs.docker.com/compose/)
+* [Github Actions](https://docs.github.com/en/actions)
+* [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/)
