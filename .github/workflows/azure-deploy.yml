@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      DOCKER_REGISTRY: f375a13f.azurecr.io
-      AZURE_RESOURCE_GROUP_NAME: 064b73c3
-      AZURE_APP_NAME_WORDS: b02d6766
-      AZURE_APP_NAME_WEB: fbd866b2
+      DOCKER_REGISTRY: <Registry Name>.azurecr.io
+      AZURE_RESOURCE_GROUP_NAME: <Resource Group Name>
+      AZURE_APP_NAME_WORDS: <Container App Name for Words>
+      AZURE_APP_NAME_WEB: <Container App Name for Web>
 
     steps:
 

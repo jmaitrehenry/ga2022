@@ -51,11 +51,12 @@ In your git repository, go to Settings > Secrets, and add the following Action s
 
 The `.github/workflows/azure-deploy.yml` file contains the GitHub workflow that is triggered when the `main` branch is pushed.
 
-Fill the `jobs.deploy.env` variables:
+Fill the `jobs.deploy.env` variables with their respective values:
 
-* `DOCKER_REGISTRY`: f375a13f.azurecr.io
-* `DOCKER_IMAGE_NAME_WORDS`: words:1.0.1
-* `DOCKER_IMAGE_NAME_WEB`: web:1.0.1
+* `DOCKER_REGISTRY`: The container registry's name, followed by `.azurecr.io`
+* `AZURE_RESOURCE_GROUP_NAME`: The resource group's name
+* `AZURE_APP_NAME_WORDS`: The container app's name for the Words application
+* `AZURE_APP_NAME_WEB`: The container app's name for the Web application
 
 ## Push GitHub Workflow
 
