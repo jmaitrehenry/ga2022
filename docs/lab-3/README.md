@@ -1,5 +1,7 @@
 # Lab 3 - Automate Build and Deployment using Github Action to Azure Container Apps
 
+The demo application will be deployed automatically using GitHub actions in this step.
+
 ## Create a Service Principal for GitHub
 
 Instead of the main Azure account, it is recommended to create a `Service Principal`, which will be used by GitHub to connect to Azure.
@@ -27,15 +29,15 @@ In Azure Portal's [App registrations](https://portal.azure.com/#blade/Microsoft_
 
 Then, in that service principal's Manage > Certificates and secrets, create a new client secret, and take note of the generated secret value.
 
-In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups), select the resource group used for this demo. In Access Control (AIM), add a new role assignment with the `Contributor` role to the service principal created earlier.
+In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups), select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the `Contributor` role to the service principal created earlier.
 
 ## Add GitHub Secrets
 
-In your git repository, go to Settings > Secrets, and add the following Action secrets:
+In your GitHub repository, go to Settings > Secrets, and add the following Action secrets:
 
 * `AZURE_CLIENT_ID`: the Application (client) ID
 * `AZURE_CLIENT_SECRET`: the generated secret value
-* `AZURE_CREDENTIALS`: a JSON with the following value (empty strings to be replaced with actual values):
+* `AZURE_CREDENTIALS`: a JSON with the following value (placeholders replaced with actual values):
 
 ```json
 {
@@ -46,6 +48,8 @@ In your git repository, go to Settings > Secrets, and add the following Action s
     "resourceManagerEndpointUrl": "https://management.azure.com/"
 }
 ```
+
+While you are in the GitHub interface, visit the Actions section. If prompted, enable GitHub workflows, otherwise the next step will not trigger any actions.
 
 ## Add Github Actions
 

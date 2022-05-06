@@ -1,14 +1,16 @@
 # Lab 2 - Deploy Applications using Azure Container Apps
 
+The demo application will be manually deployed in this step.
+
 ## Create a Container App
 
-The demo application will be manually deployed in this step.
+The demo app requires two containers: a back-end, `words`, and a front-end, `web`.
 
 ### words:1.0.0
 
 In Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps), create a new application.
 
-In the `Basics` section, name the application `words`. A new container app environment can also be created.
+In the `Basics` section, name the application `words`. A new container app environment must also be created.
 
 In the `App settings` section, uncheck the Use quickstart image checkbox, name the container `words`, and select your `words:1.0.0` image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to `8080`.
 
@@ -22,7 +24,7 @@ In the `Basics` section, name the application `web`, and select the same contain
 
 In the `App settings` section, uncheck the Use quickstart image checkbox, name the container `web`, and select your `web:1.0.0` image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to `80`.
 
-After the application is deployed, in its Application > Containers, edit the container and add an environment variable `WORD_API_URL` with value set to the `words`'s application's URL.
+After the application is deployed, in its Application > Containers, edit the container, click on the `web` container, and add an environment variable `WORD_API_URL` with value set to the `words`'s application's URL.
 
 After the `web` application is redeployed, visit its application URL. Lego blocks should appear on screen with words on them.
 
