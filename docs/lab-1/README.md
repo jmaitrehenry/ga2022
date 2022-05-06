@@ -12,15 +12,15 @@ In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtensio
 
 In Azure Portal's [Container registries](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries), create a new registry.
 
-Then, in that registry's Settings > Access Key, enable `Admin user`. This is optional and may not always be adviseable, but this enables the manual deployment in the `lab-2` tutorial.
+After the registry is created, in that registry's Settings > Access Key, enable `Admin user`. This may not always be adviseable, but this enables the manual deployment in the `lab-2` tutorial.
 
 ## Build and Push the Containers
 
 This step builds the two applications locally:
 
 ```bash
-docker build -t <registry-name>/web:1.0.0 ./web
-docker build -t <registry-name>/words:1.0.0 ./words
+docker build -t <registry-name>.azurecr.io/words:1.0.0 ./words
+docker build -t <registry-name>.azurecr.io/web:1.0.0 ./web
 ```
 
 Then the following will log into Azure, and push the containers.
@@ -28,9 +28,9 @@ Then the following will log into Azure, and push the containers.
 During the login, use the registry's admin user's name and password.
 
 ```bash
-docker login <registry-name>
-docker push <registry-name>/web:1.0.0
-docker push <registry-name>/words:1.0.0
+docker login <registry-name>.azurecr.io
+docker push <registry-name>.azurecr.io/words:1.0.0
+docker push <registry-name>.azurecr.io/web:1.0.0
 ```
 
 Finally, in the registry's Services > Repositories, validate that the two Docker images were pushed successfully.
