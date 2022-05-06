@@ -576,6 +576,7 @@
 
 
 <h1 id="lab-3-automate-build-and-deployment-using-github-action-to-azure-container-apps">Lab 3 - Automate Build and Deployment using Github Action to Azure Container Apps<a class="headerlink" href="#lab-3-automate-build-and-deployment-using-github-action-to-azure-container-apps" title="Permanent link">&para;</a></h1>
+<p>The demo application will be deployed automatically using GitHub actions in this step.</p>
 <h2 id="create-a-service-principal-for-github">Create a Service Principal for GitHub<a class="headerlink" href="#create-a-service-principal-for-github" title="Permanent link">&para;</a></h2>
 <p>Instead of the main Azure account, it is recommended to create a <code>Service Principal</code>, which will be used by GitHub to connect to Azure.</p>
 <p>The following will describe the steps necessary to create that service principal, and grant it the <code>Contributor</code> role at the resource group level. This role will be inherited by all resources under the resource group.</p>
@@ -591,13 +592,13 @@
 <h3 id="from-azure-portal">From Azure Portal<a class="headerlink" href="#from-azure-portal" title="Permanent link">&para;</a></h3>
 <p>In Azure Portal's <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade">App registrations</a>, create a new registration.</p>
 <p>Then, in that service principal's Manage &gt; Certificates and secrets, create a new client secret, and take note of the generated secret value.</p>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, select the resource group used for this demo. In Access Control (AIM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
 <h2 id="add-github-secrets">Add GitHub Secrets<a class="headerlink" href="#add-github-secrets" title="Permanent link">&para;</a></h2>
-<p>In your git repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
+<p>In your GitHub repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
 <ul>
 <li><code>AZURE_CLIENT_ID</code>: the Application (client) ID</li>
 <li><code>AZURE_CLIENT_SECRET</code>: the generated secret value</li>
-<li><code>AZURE_CREDENTIALS</code>: a JSON with the following value (empty strings to be replaced with actual values):</li>
+<li><code>AZURE_CREDENTIALS</code>: a JSON with the following value (placeholders replaced with actual values):</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Tenant ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
@@ -607,6 +608,7 @@
 <span class="w">    </span><span class="nt">&quot;resourceManagerEndpointUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://management.azure.com/&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<p>While you are in the GitHub interface, visit the Actions section. If prompted, enable GitHub workflows, otherwise the next step will not trigger any actions.</p>
 <h2 id="add-github-actions">Add Github Actions<a class="headerlink" href="#add-github-actions" title="Permanent link">&para;</a></h2>
 <p>The <code>.github/workflows/azure-deploy.yml</code> file contains the GitHub workflow that is triggered when the <code>main</code> branch is pushed.</p>
 <p>Fill the <code>jobs.deploy.env</code> variables with their respective values:</p>

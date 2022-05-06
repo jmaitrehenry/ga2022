@@ -554,17 +554,17 @@
 <p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, create a new resource group under your subscription.</p>
 <h3 id="container-registry">Container Registry<a class="headerlink" href="#container-registry" title="Permanent link">&para;</a></h3>
 <p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries">Container registries</a>, create a new registry.</p>
-<p>Then, in that registry's Settings &gt; Access Key, enable <code>Admin user</code>. This is optional and may not always be adviseable, but this enables the manual deployment in the <code>lab-2</code> tutorial.</p>
+<p>After the registry is created, in that registry's Settings &gt; Access Key, enable <code>Admin user</code>. This may not always be adviseable, but this enables the manual deployment in the <code>lab-2</code> tutorial.</p>
 <h2 id="build-and-push-the-containers">Build and Push the Containers<a class="headerlink" href="#build-and-push-the-containers" title="Permanent link">&para;</a></h2>
 <p>This step builds the two applications locally:</p>
-<div class="highlight"><pre><span></span><code>docker build -t &lt;registry-name&gt;/web:1.0.0 ./web
-docker build -t &lt;registry-name&gt;/words:1.0.0 ./words
+<div class="highlight"><pre><span></span><code>docker build -t &lt;registry-name&gt;.azurecr.io/words:1.0.0 ./words
+docker build -t &lt;registry-name&gt;.azurecr.io/web:1.0.0 ./web
 </code></pre></div>
 <p>Then the following will log into Azure, and push the containers.</p>
 <p>During the login, use the registry's admin user's name and password.</p>
-<div class="highlight"><pre><span></span><code>docker login &lt;registry-name&gt;
-docker push &lt;registry-name&gt;/web:1.0.0
-docker push &lt;registry-name&gt;/words:1.0.0
+<div class="highlight"><pre><span></span><code>docker login &lt;registry-name&gt;.azurecr.io
+docker push &lt;registry-name&gt;.azurecr.io/words:1.0.0
+docker push &lt;registry-name&gt;.azurecr.io/web:1.0.0
 </code></pre></div>
 <p>Finally, in the registry's Services &gt; Repositories, validate that the two Docker images were pushed successfully.</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
