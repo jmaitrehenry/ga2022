@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-2-deploy-our-app-using-azure-container-apps" class="md-skip">
+        <a href="#lab-2-deploy-applications-using-azure-container-apps" class="md-skip">
           Skip to content
         </a>
       
@@ -393,8 +393,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating" class="md-nav__link">
-    Creating ...
+  <a href="#create-a-container-app" class="md-nav__link">
+    Create a Container App
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Container App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#words100" class="md-nav__link">
+    words:1.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web100" class="md-nav__link">
+    web:1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
   </a>
   
 </li>
@@ -455,8 +482,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating" class="md-nav__link">
-    Creating ...
+  <a href="#create-a-container-app" class="md-nav__link">
+    Create a Container App
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Container App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#words100" class="md-nav__link">
+    words:1.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web100" class="md-nav__link">
+    web:1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
   </a>
   
 </li>
@@ -479,8 +533,22 @@
 
 
 
-<h1 id="lab-2-deploy-our-app-using-azure-container-apps">Lab 2 - Deploy our app using Azure Container Apps<a class="headerlink" href="#lab-2-deploy-our-app-using-azure-container-apps" title="Permanent link">&para;</a></h1>
-<h2 id="creating">Creating ...<a class="headerlink" href="#creating" title="Permanent link">&para;</a></h2>
+<h1 id="lab-2-deploy-applications-using-azure-container-apps">Lab 2 - Deploy Applications using Azure Container Apps<a class="headerlink" href="#lab-2-deploy-applications-using-azure-container-apps" title="Permanent link">&para;</a></h1>
+<h2 id="create-a-container-app">Create a Container App<a class="headerlink" href="#create-a-container-app" title="Permanent link">&para;</a></h2>
+<p>The demo application will be manually deployed in this step.</p>
+<h3 id="words100">words:1.0.0<a class="headerlink" href="#words100" title="Permanent link">&para;</a></h3>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps">Container Apps</a>, create a new application.</p>
+<p>In the <code>Basics</code> section, name the application <code>words</code>. A new container app environment can also be created.</p>
+<p>In the <code>App settings</code> section, uncheck the Use quickstart image checkbox, name the container <code>words</code>, and select your <code>words:1.0.0</code> image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to <code>8080</code>.</p>
+<p>After the application is deployed, in its Overview, visit the application's URL, appending a <code>/verbs</code> at the end of the path. This should result in a JSON with a <code>word</code> attribute.</p>
+<h3 id="web100">web:1.0.0<a class="headerlink" href="#web100" title="Permanent link">&para;</a></h3>
+<p>Back in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps">Container Apps</a>, create another new application.</p>
+<p>In the <code>Basics</code> section, name the application <code>web</code>, and select the same container app environment as the one that was created in the previous step.</p>
+<p>In the <code>App settings</code> section, uncheck the Use quickstart image checkbox, name the container <code>web</code>, and select your <code>web:1.0.0</code> image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to <code>80</code>.</p>
+<p>After the application is deployed, in its Application &gt; Containers, edit the container and add an environment variable <code>WORD_API_URL</code> with value set to the <code>words</code>'s application's URL.</p>
+<p>After the <code>web</code> application is redeployed, visit its application URL. Lego blocks should appear on screen with words on them.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>In this step, we created two container apps based on the images that were previously built.</p>
 
               
             </article>

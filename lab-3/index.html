@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-3-automate-app-building-and-deployment-using-github-action-to-azure-container-apps" class="md-skip">
+        <a href="#lab-3-automate-build-and-deployment-using-github-action-to-azure-container-apps" class="md-skip">
           Skip to content
         </a>
       
@@ -407,37 +407,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-to-the-repository" class="md-nav__link">
-    Add Github Action to the repository
+  <a href="#create-a-service-principal-for-github" class="md-nav__link">
+    Create a Service Principal for GitHub
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-azure-service-principal-for-github" class="md-nav__link">
-    Create Azure Service Principal for Github
-  </a>
-  
-    <nav class="md-nav" aria-label="Create Azure Service Principal for Github">
+    <nav class="md-nav" aria-label="Create a Service Principal for GitHub">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-the-service-account" class="md-nav__link">
-    Create the service account
+  <a href="#from-the-terminal" class="md-nav__link">
+    From the Terminal
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-access-to-acr-and-azure-container-apps" class="md-nav__link">
-    Add access to ACR and Azure Container Apps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-build-secret-with-our-service-principal-credentials" class="md-nav__link">
-    Add build secret with our service principal credentials
+  <a href="#from-azure-portal" class="md-nav__link">
+    From Azure Portal
   </a>
   
 </li>
@@ -448,15 +434,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-for-the-web-app" class="md-nav__link">
-    Add Github Action for the web app
+  <a href="#add-github-secrets" class="md-nav__link">
+    Add GitHub Secrets
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-for-the-words-app" class="md-nav__link">
-    Add Github Action for the words app
+  <a href="#add-github-actions" class="md-nav__link">
+    Add Github Actions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-github-workflow" class="md-nav__link">
+    Push GitHub Workflow
   </a>
   
 </li>
@@ -510,37 +503,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-to-the-repository" class="md-nav__link">
-    Add Github Action to the repository
+  <a href="#create-a-service-principal-for-github" class="md-nav__link">
+    Create a Service Principal for GitHub
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-azure-service-principal-for-github" class="md-nav__link">
-    Create Azure Service Principal for Github
-  </a>
-  
-    <nav class="md-nav" aria-label="Create Azure Service Principal for Github">
+    <nav class="md-nav" aria-label="Create a Service Principal for GitHub">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-the-service-account" class="md-nav__link">
-    Create the service account
+  <a href="#from-the-terminal" class="md-nav__link">
+    From the Terminal
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#add-access-to-acr-and-azure-container-apps" class="md-nav__link">
-    Add access to ACR and Azure Container Apps
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#add-build-secret-with-our-service-principal-credentials" class="md-nav__link">
-    Add build secret with our service principal credentials
+  <a href="#from-azure-portal" class="md-nav__link">
+    From Azure Portal
   </a>
   
 </li>
@@ -551,15 +530,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-for-the-web-app" class="md-nav__link">
-    Add Github Action for the web app
+  <a href="#add-github-secrets" class="md-nav__link">
+    Add GitHub Secrets
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-github-action-for-the-words-app" class="md-nav__link">
-    Add Github Action for the words app
+  <a href="#add-github-actions" class="md-nav__link">
+    Add Github Actions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-github-workflow" class="md-nav__link">
+    Push GitHub Workflow
   </a>
   
 </li>
@@ -589,18 +575,52 @@
 
 
 
-<h1 id="lab-3-automate-app-building-and-deployment-using-github-action-to-azure-container-apps">Lab 3 - Automate app building and deployment using Github Action to Azure Container Apps<a class="headerlink" href="#lab-3-automate-app-building-and-deployment-using-github-action-to-azure-container-apps" title="Permanent link">&para;</a></h1>
-<h2 id="add-github-action-to-the-repository">Add Github Action to the repository<a class="headerlink" href="#add-github-action-to-the-repository" title="Permanent link">&para;</a></h2>
-<h2 id="create-azure-service-principal-for-github">Create Azure Service Principal for Github<a class="headerlink" href="#create-azure-service-principal-for-github" title="Permanent link">&para;</a></h2>
-<h3 id="create-the-service-account">Create the service account<a class="headerlink" href="#create-the-service-account" title="Permanent link">&para;</a></h3>
-<h3 id="add-access-to-acr-and-azure-container-apps">Add access to ACR and Azure Container Apps<a class="headerlink" href="#add-access-to-acr-and-azure-container-apps" title="Permanent link">&para;</a></h3>
-<h3 id="add-build-secret-with-our-service-principal-credentials">Add build secret with our service principal credentials<a class="headerlink" href="#add-build-secret-with-our-service-principal-credentials" title="Permanent link">&para;</a></h3>
-<h2 id="add-github-action-for-the-web-app">Add Github Action for the web app<a class="headerlink" href="#add-github-action-for-the-web-app" title="Permanent link">&para;</a></h2>
-<h2 id="add-github-action-for-the-words-app">Add Github Action for the words app<a class="headerlink" href="#add-github-action-for-the-words-app" title="Permanent link">&para;</a></h2>
+<h1 id="lab-3-automate-build-and-deployment-using-github-action-to-azure-container-apps">Lab 3 - Automate Build and Deployment using Github Action to Azure Container Apps<a class="headerlink" href="#lab-3-automate-build-and-deployment-using-github-action-to-azure-container-apps" title="Permanent link">&para;</a></h1>
+<h2 id="create-a-service-principal-for-github">Create a Service Principal for GitHub<a class="headerlink" href="#create-a-service-principal-for-github" title="Permanent link">&para;</a></h2>
+<p>Instead of the main Azure account, it is recommended to create a <code>Service Principal</code>, which will be used by GitHub to connect to Azure.</p>
+<p>The following will describe the steps necessary to create that service principal, and grant it the <code>Contributor</code> role at the resource group level. This role will be inherited by all resources under the resource group.</p>
+<p>Usually, the permissions granted would be more fine-grained. For example, the service principal would instead have the <code>AcrPush</code> role in the registry itself, but granting a wide-scoped role is easier during a demo.</p>
+<h3 id="from-the-terminal">From the Terminal<a class="headerlink" href="#from-the-terminal" title="Permanent link">&para;</a></h3>
+<p>Using the <code>az</code> command, create a service principal:</p>
+<div class="highlight"><pre><span></span><code>az ad sp create-for-rbac <span class="se">\</span>
+  --name <span class="s2">&quot;github-bot&quot;</span> <span class="se">\</span>
+  --role <span class="s2">&quot;contributor&quot;</span> <span class="se">\</span>
+  --scopes /subscriptions/c235daef-a49b-4feb-b432-9ea0b7cbbc6b/resourceGroups/064b73c3
+</code></pre></div>
+<p>The output will contain the service principal's ID (<code>appId</code>) and its password. Take note of them.</p>
+<h3 id="from-azure-portal">From Azure Portal<a class="headerlink" href="#from-azure-portal" title="Permanent link">&para;</a></h3>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade">App registrations</a>, create a new registration.</p>
+<p>Then, in that service principal's Manage &gt; Certificates and secrets, create a new client secret, and take note of the generated secret value.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, select the resource group used for this demo. In Access Control (AIM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
+<h2 id="add-github-secrets">Add GitHub Secrets<a class="headerlink" href="#add-github-secrets" title="Permanent link">&para;</a></h2>
+<p>In your git repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
+<ul>
+<li><code>AZURE_CLIENT_ID</code>: the Application (client) ID</li>
+<li><code>AZURE_CLIENT_SECRET</code>: the generated secret value</li>
+<li><code>AZURE_CREDENTIALS</code>: a JSON with the following value (empty strings to be replaced with actual values):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Tenant ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Subscription ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principal ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principal Secret&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resourceManagerEndpointUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://management.azure.com/&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="add-github-actions">Add Github Actions<a class="headerlink" href="#add-github-actions" title="Permanent link">&para;</a></h2>
+<p>The <code>.github/workflows/azure-deploy.yml</code> file contains the GitHub workflow that is triggered when the <code>main</code> branch is pushed.</p>
+<p>Fill the <code>jobs.deploy.env</code> variables with their respective values:</p>
+<ul>
+<li><code>DOCKER_REGISTRY</code>: The container registry's name, followed by <code>.azurecr.io</code></li>
+<li><code>AZURE_RESOURCE_GROUP_NAME</code>: The resource group's name</li>
+<li><code>AZURE_APP_NAME_WORDS</code>: The container app's name for the Words application</li>
+<li><code>AZURE_APP_NAME_WEB</code>: The container app's name for the Web application</li>
+</ul>
+<h2 id="push-github-workflow">Push GitHub Workflow<a class="headerlink" href="#push-github-workflow" title="Permanent link">&para;</a></h2>
+<p>The changes to the GitHub workflow can now be pushed to the remote repository. The workflow should start automatically, and can be found in the Actions section.</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>We created a limited account that could interact with our docker registry and our container applications. 
-After that, we build and deployed our application only when they have some changes.</p>
-<p>You have now a full Continuous Deployment Pipeline running into Github !</p>
+<p>We created a limited account that could interact with our docker registry and our container applications. After that, we built and deployed our application only when they have some changes.</p>
+<p>You have now a full Continuous Deployment Pipeline running into Github!</p>
 
               
             </article>
