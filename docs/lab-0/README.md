@@ -10,7 +10,7 @@ None
 
 ## Optional: Install Docker Desktop
 
-1. Navigate to [Get Docker](https://docs.docker.com/get-docker/),
+1. Navigate to [Get Docker](https://docs.docker.com/get-docker/){:target="_blank"},
 
 2. Select the option for your operating system or platform:
 
@@ -22,4 +22,4 @@ None
 
 ## Summary
 
-By installing Docker, or alternatively, familiarizing yourself with [Play with Docker](http://play-with-docker.com), you are ready to complete the remaining labs in this course.
+By installing Docker, or alternatively, familiarizing yourself with [Play with Docker](http://play-with-docker.com){:target="_blank"}, you are ready to complete the remaining labs in this course.

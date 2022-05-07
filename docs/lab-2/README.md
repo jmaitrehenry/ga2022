@@ -8,7 +8,7 @@ The demo app requires two containers: a back-end, `words`, and a front-end, `web
 
 ### words:1.0.0
 
-In Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps), create a new application.
+In Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps){:target="_blank"}, create a new application.
 
 In the `Basics` section, name the application `words`. A new container app environment must also be created.
 
@@ -20,7 +20,7 @@ After the application is deployed, in its Overview, visit the application's URL,
 
 ### web:1.0.0
 
-Back in Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps), create another new application.
+Back in Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps){:target="_blank"}, create another new application.
 
 In the `Basics` section, name the application `web`, and select the same container app environment as the one that was created in the previous step.
 

@@ -25,11 +25,11 @@ The output will contain the service principal's ID (`appId`) and its password. T
 
 ### From Azure Portal
 
-In Azure Portal's [App registrations](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade), create a new registration.
+In Azure Portal's [App registrations](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade){:target="_blank"}, create a new registration.
 
 Then, in that service principal's Manage > Certificates and secrets, create a new client secret, and take note of the generated secret value.
 
-In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups), select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the `Contributor` role to the service principal created earlier.
+In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups){:target="_blank"}, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the `Contributor` role to the service principal created earlier.
 
 ## Add GitHub Secrets
 

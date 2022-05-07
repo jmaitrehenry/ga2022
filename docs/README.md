@@ -44,4 +44,4 @@ The demo app runs across two containers:
 
 ### Run the application locally
 
-You can start the application using docker compose: `docker compose up -d` and test the application inside your browser on [localhost:8080](http://localhost:8080).
+You can start the application using docker compose: `docker compose up -d` and test the application inside your browser on [http://localhost:8080](http://localhost:8080){:target="_blank"}.

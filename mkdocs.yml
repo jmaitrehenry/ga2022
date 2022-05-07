@@ -1,7 +1,7 @@
 # Project information
 site_name: Global Azure 2022 Workshop
 site_url: https://jmaitrehenry.github.io/ga2022
-site_author: Julien Maitrehenry
+site_author: Julien Maitrehenry & Simon Bernier
 
 # Repository
 repo_name: Global Azure 2022 Workshop
@@ -25,7 +25,7 @@ nav:
 ## DO NOT CHANGE BELOW THIS LINE
 
 # Copyright
-copyright: Copyright &copy; 2022 Julien Maitrehenry
+copyright: Copyright &copy; 2022 Julien Maitrehenry & Simon Bernier
 
 # Theme
 theme:

@@ -1,6 +1,6 @@
 # Lab 1 - Build and Push Containers to Azure Container Registry
 
-The first step will be to create a Docker Registry, we will use [Azure Container Registry](https://azure.microsoft.com/en-ca/services/container-registry/#overview) for that.
+The first step will be to create a Docker Registry, we will use [Azure Container Registry](https://azure.microsoft.com/en-ca/services/container-registry/#overview){:target="_blank"} for that.
 
 ## Create an Azure Container Registry
 
@@ -8,7 +8,7 @@ The first step will be to create a Docker Registry, we will use [Azure Container
 
 If needed, a new `Resource Group` can be created. It is recommended to create a new resource group for this tutorial, after which cleaning up will be easier.
 
-In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups), create a new resource group under your subscription.
+In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups){:target="_blank"}, create a new resource group under your subscription.
 
 ### Container Registry
 
@@ -63,4 +63,4 @@ Finally, in the registry's Services > Repositories, validate that the two Docker
 
 In this step, we created a private docker registry, built two docker images and pushed them into the cloud.
 
-> __Note on public and private registries:__ When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. [Docker Hub](https://hub.docker.com) is a popular service that offers both public and private registries.
+> __Note on public and private registries:__ When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. [Docker Hub](https://hub.docker.com){:target="_blank"} is a popular service that offers both public and private registries.
