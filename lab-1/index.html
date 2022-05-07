@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <meta name="author" content="Julien Maitrehenry">
+        <meta name="author" content="Julien Maitrehenry & Simon Bernier">
       
       
         <link rel="canonical" href="https://jmaitrehenry.github.io/ga2022/lab-1/">
@@ -616,11 +616,11 @@
 
 
 <h1 id="lab-1-build-and-push-containers-to-azure-container-registry">Lab 1 - Build and Push Containers to Azure Container Registry<a class="headerlink" href="#lab-1-build-and-push-containers-to-azure-container-registry" title="Permanent link">&para;</a></h1>
-<p>The first step will be to create a Docker Registry, we will use <a href="https://azure.microsoft.com/en-ca/services/container-registry/#overview">Azure Container Registry</a> for that.</p>
+<p>The first step will be to create a Docker Registry, we will use <a href="https://azure.microsoft.com/en-ca/services/container-registry/#overview" target="_blank">Azure Container Registry</a> for that.</p>
 <h2 id="create-an-azure-container-registry">Create an Azure Container Registry<a class="headerlink" href="#create-an-azure-container-registry" title="Permanent link">&para;</a></h2>
 <h3 id="resource-group">Resource Group<a class="headerlink" href="#resource-group" title="Permanent link">&para;</a></h3>
 <p>If needed, a new <code>Resource Group</code> can be created. It is recommended to create a new resource group for this tutorial, after which cleaning up will be easier.</p>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, create a new resource group under your subscription.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups" target="_blank">Resource groups</a>, create a new resource group under your subscription.</p>
 <h3 id="container-registry">Container Registry<a class="headerlink" href="#container-registry" title="Permanent link">&para;</a></h3>
 <p>In Azure Portal, create a new registry. You have many way of creating a ressource in Azure Portal</p>
 <h4 id="on-the-top-left-menu">On the top left menu<a class="headerlink" href="#on-the-top-left-menu" title="Permanent link">&para;</a></h4>
@@ -655,7 +655,7 @@ docker push &lt;registry-name&gt;.azurecr.io/web:1.0.0
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this step, we created a private docker registry, built two docker images and pushed them into the cloud.</p>
 <blockquote>
-<p><strong>Note on public and private registries:</strong> When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. <a href="https://hub.docker.com">Docker Hub</a> is a popular service that offers both public and private registries.</p>
+<p><strong>Note on public and private registries:</strong> When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. <a href="https://hub.docker.com" target="_blank">Docker Hub</a> is a popular service that offers both public and private registries.</p>
 </blockquote>
 
               
@@ -707,7 +707,7 @@ docker push &lt;registry-name&gt;.azurecr.io/web:1.0.0
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 Julien Maitrehenry
+      Copyright &copy; 2022 Julien Maitrehenry & Simon Bernier
     </div>
   
   

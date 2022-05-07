@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <meta name="author" content="Julien Maitrehenry">
+        <meta name="author" content="Julien Maitrehenry & Simon Bernier">
       
       
         <link rel="canonical" href="https://jmaitrehenry.github.io/ga2022/lab-3/">
@@ -455,6 +455,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#make-a-change-in-the-web-application" class="md-nav__link">
+    Make a change in the web application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -551,6 +558,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#make-a-change-in-the-web-application" class="md-nav__link">
+    Make a change in the web application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -590,9 +604,9 @@
 </code></pre></div>
 <p>The output will contain the service principal's ID (<code>appId</code>) and its password. Take note of them.</p>
 <h3 id="from-azure-portal">From Azure Portal<a class="headerlink" href="#from-azure-portal" title="Permanent link">&para;</a></h3>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade">App registrations</a>, create a new registration.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade" target="_blank">App registrations</a>, create a new registration.</p>
 <p>Then, in that service principal's Manage &gt; Certificates and secrets, create a new client secret, and take note of the generated secret value.</p>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups" target="_blank">Resource groups</a>, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
 <h2 id="add-github-secrets">Add GitHub Secrets<a class="headerlink" href="#add-github-secrets" title="Permanent link">&para;</a></h2>
 <p>In your GitHub repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
 <ul>
@@ -610,7 +624,7 @@
 </code></pre></div>
 <p>While you are in the GitHub interface, visit the Actions section. If prompted, enable GitHub workflows, otherwise the next step will not trigger any actions.</p>
 <h2 id="add-github-actions">Add Github Actions<a class="headerlink" href="#add-github-actions" title="Permanent link">&para;</a></h2>
-<p>The <code>.github/workflows/azure-deploy.yml</code> file contains the GitHub workflow that is triggered when the <code>main</code> branch is pushed.</p>
+<p>The <code>azure-deploy.yml</code> file contains the GitHub workflow that is triggered when the <code>main</code> branch is pushed.</p>
 <p>Fill the <code>jobs.deploy.env</code> variables with their respective values:</p>
 <ul>
 <li><code>DOCKER_REGISTRY</code>: The container registry's name, followed by <code>.azurecr.io</code></li>
@@ -618,8 +632,17 @@
 <li><code>AZURE_APP_NAME_WORDS</code>: The container app's name for the Words application</li>
 <li><code>AZURE_APP_NAME_WEB</code>: The container app's name for the Web application</li>
 </ul>
+<p>Now, create a directory for the Github Action:
+<div class="highlight"><pre><span></span><code>mkdir -p .github/workflows
+</code></pre></div></p>
+<p>And copy or move the github action into it:
+<div class="highlight"><pre><span></span><code>mv azure-deploy.yml .github/workflows/
+</code></pre></div></p>
 <h2 id="push-github-workflow">Push GitHub Workflow<a class="headerlink" href="#push-github-workflow" title="Permanent link">&para;</a></h2>
-<p>The changes to the GitHub workflow can now be pushed to the remote repository. The workflow should start automatically, and can be found in the Actions section.</p>
+<p>The changes to the GitHub workflow can now be commited and pushed to the remote repository. The workflow should start automatically, and can be found in the Actions section.</p>
+<h2 id="make-a-change-in-the-web-application">Make a change in the web application<a class="headerlink" href="#make-a-change-in-the-web-application" title="Permanent link">&para;</a></h2>
+<p>For example, you can edit the title of the page. Open the <code>web/static/index.html</code> file and change <code>&lt;title&gt;Global Azure 2022&lt;/title&gt;</code> for adding your name.
+Commit and push your change and check if the web application build and deploy. Once the Github Action finish, check your application to validate the change.</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>We created a limited account that could interact with our docker registry and our container applications. After that, we built and deployed our application only when they have some changes.</p>
 <p>You have now a full Continuous Deployment Pipeline running into Github!</p>
@@ -658,7 +681,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 Julien Maitrehenry
+      Copyright &copy; 2022 Julien Maitrehenry & Simon Bernier
     </div>
   
   

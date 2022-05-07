@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <meta name="author" content="Julien Maitrehenry">
+        <meta name="author" content="Julien Maitrehenry & Simon Bernier">
       
       
         <link rel="canonical" href="https://jmaitrehenry.github.io/ga2022/lab-2/">
@@ -538,15 +538,18 @@
 <h2 id="create-a-container-app">Create a Container App<a class="headerlink" href="#create-a-container-app" title="Permanent link">&para;</a></h2>
 <p>The demo app requires two containers: a back-end, <code>words</code>, and a front-end, <code>web</code>.</p>
 <h3 id="words100">words:1.0.0<a class="headerlink" href="#words100" title="Permanent link">&para;</a></h3>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps">Container Apps</a>, create a new application.</p>
+<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps" target="_blank">Container Apps</a>, create a new application.</p>
 <p>In the <code>Basics</code> section, name the application <code>words</code>. A new container app environment must also be created.</p>
 <p>In the <code>App settings</code> section, uncheck the Use quickstart image checkbox, name the container <code>words</code>, and select your <code>words:1.0.0</code> image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to <code>8080</code>.</p>
+<p><img alt="GIF of word app container creation" src="../assets/container-app-words.gif" /></p>
 <p>After the application is deployed, in its Overview, visit the application's URL, appending a <code>/verbs</code> at the end of the path. This should result in a JSON with a <code>word</code> attribute.</p>
 <h3 id="web100">web:1.0.0<a class="headerlink" href="#web100" title="Permanent link">&para;</a></h3>
-<p>Back in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps">Container Apps</a>, create another new application.</p>
+<p>Back in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps" target="_blank">Container Apps</a>, create another new application.</p>
 <p>In the <code>Basics</code> section, name the application <code>web</code>, and select the same container app environment as the one that was created in the previous step.</p>
 <p>In the <code>App settings</code> section, uncheck the Use quickstart image checkbox, name the container <code>web</code>, and select your <code>web:1.0.0</code> image from the registry. Enable the HTTP ingress, accepting traffic from anywhere, and set the port to <code>80</code>.</p>
-<p>After the application is deployed, in its Application &gt; Containers, edit the container, click on the <code>web</code> container, and add an environment variable <code>WORD_API_URL</code> with value set to the <code>words</code>'s application's URL.</p>
+<p><img alt="GIF of web app container creation" src="../assets/container-app-web.gif" /></p>
+<p>After the application is deployed, in its Application &gt; Containers, edit the container, click on the <code>web</code> container, and add an environment variable <code>WORD_API_URL</code> with value set to the <code>words</code>'s application's URL without the trailing <code>/</code>.</p>
+<p><img alt="Update web app with an env var" src="../assets/update-app-web-with-env.gif" /></p>
 <p>After the <code>web</code> application is redeployed, visit its application URL. Lego blocks should appear on screen with words on them.</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this step, we created two container apps based on the images that were previously built.</p>
@@ -600,7 +603,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 Julien Maitrehenry
+      Copyright &copy; 2022 Julien Maitrehenry & Simon Bernier
     </div>
   
   
