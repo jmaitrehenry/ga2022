@@ -398,6 +398,40 @@
     Container Registry
   </a>
   
+    <nav class="md-nav" aria-label="Container Registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-top-left-menu" class="md-nav__link">
+    On the top left menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-a-ressource-group" class="md-nav__link">
+    In a Ressource Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-the-pannel-of-the-product-you-want-to-create" class="md-nav__link">
+    In the pannel of the product you want to create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-registry" class="md-nav__link">
+    Creating the registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -508,6 +542,40 @@
     Container Registry
   </a>
   
+    <nav class="md-nav" aria-label="Container Registry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-top-left-menu" class="md-nav__link">
+    On the top left menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-a-ressource-group" class="md-nav__link">
+    In a Ressource Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-the-pannel-of-the-product-you-want-to-create" class="md-nav__link">
+    In the pannel of the product you want to create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-registry" class="md-nav__link">
+    Creating the registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -548,28 +616,47 @@
 
 
 <h1 id="lab-1-build-and-push-containers-to-azure-container-registry">Lab 1 - Build and Push Containers to Azure Container Registry<a class="headerlink" href="#lab-1-build-and-push-containers-to-azure-container-registry" title="Permanent link">&para;</a></h1>
+<p>The first step will be to create a Docker Registry, we will use <a href="https://azure.microsoft.com/en-ca/services/container-registry/#overview">Azure Container Registry</a> for that.</p>
 <h2 id="create-an-azure-container-registry">Create an Azure Container Registry<a class="headerlink" href="#create-an-azure-container-registry" title="Permanent link">&para;</a></h2>
 <h3 id="resource-group">Resource Group<a class="headerlink" href="#resource-group" title="Permanent link">&para;</a></h3>
 <p>If needed, a new <code>Resource Group</code> can be created. It is recommended to create a new resource group for this tutorial, after which cleaning up will be easier.</p>
 <p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups">Resource groups</a>, create a new resource group under your subscription.</p>
 <h3 id="container-registry">Container Registry<a class="headerlink" href="#container-registry" title="Permanent link">&para;</a></h3>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries">Container registries</a>, create a new registry.</p>
+<p>In Azure Portal, create a new registry. You have many way of creating a ressource in Azure Portal</p>
+<h4 id="on-the-top-left-menu">On the top left menu<a class="headerlink" href="#on-the-top-left-menu" title="Permanent link">&para;</a></h4>
+<p><img alt="Create from top menu" src="../assets/create-1.gif" /></p>
+<h4 id="in-a-ressource-group">In a Ressource Group<a class="headerlink" href="#in-a-ressource-group" title="Permanent link">&para;</a></h4>
+<p><img alt="Create from Ressource Group" src="../assets/create-2.gif" /></p>
+<h4 id="in-the-pannel-of-the-product-you-want-to-create">In the pannel of the product you want to create<a class="headerlink" href="#in-the-pannel-of-the-product-you-want-to-create" title="Permanent link">&para;</a></h4>
+<p><img alt="Create from product page" src="../assets/create-3.png" /></p>
+<h4 id="creating-the-registry">Creating the registry<a class="headerlink" href="#creating-the-registry" title="Permanent link">&para;</a></h4>
+<p>Now, choose your subscription, ressource group, a name and a location.
+For the SKU, choose Basic as we do not need more for this workshop.</p>
+<p><img alt="Create from product page" src="../assets/create-4.png" /></p>
 <p>After the registry is created, in that registry's Settings &gt; Access Key, enable <code>Admin user</code>. This may not always be adviseable, but this enables the manual deployment in the <code>lab-2</code> tutorial.</p>
+<p><img alt="Activate Access Key" src="../assets/admin-key.gif" /></p>
+<blockquote>
+<p><strong>Note:</strong> The Access Keys method should be replaced by using a service principal when possible as it's not the most secure way to connect to the registry.
+Also, the key in the screenshot are no more valid, if you share a key, you can rotate it to invalidate it ;-)</p>
+</blockquote>
 <h2 id="build-and-push-the-containers">Build and Push the Containers<a class="headerlink" href="#build-and-push-the-containers" title="Permanent link">&para;</a></h2>
 <p>This step builds the two applications locally:</p>
 <div class="highlight"><pre><span></span><code>docker build -t &lt;registry-name&gt;.azurecr.io/words:1.0.0 ./words
 docker build -t &lt;registry-name&gt;.azurecr.io/web:1.0.0 ./web
 </code></pre></div>
 <p>Then the following will log into Azure, and push the containers.</p>
-<p>During the login, use the registry's admin user's name and password.</p>
+<p>During the login, use the registry's admin user's name and password from the previous step.</p>
 <div class="highlight"><pre><span></span><code>docker login &lt;registry-name&gt;.azurecr.io
 docker push &lt;registry-name&gt;.azurecr.io/words:1.0.0
 docker push &lt;registry-name&gt;.azurecr.io/web:1.0.0
 </code></pre></div>
-<p>Finally, in the registry's Services &gt; Repositories, validate that the two Docker images were pushed successfully.</p>
+<p>Finally, in the registry's Services &gt; Repositories, validate that the two Docker images were pushed successfully.
+<img alt="Validate that the two Docker images were pushed successfully" src="../assets/registry-check.gif" /></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this step, we created a private docker registry, built two docker images and pushed them into the cloud.</p>
-<p>Note on public and private registries: When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. <a href="https://hub.docker.com">Docker Hub</a> is a popular service that offers both public and private registries.</p>
+<blockquote>
+<p><strong>Note on public and private registries:</strong> When a project contains private or sensitive data, it is important to use a private registry. Other projects, such as open-source applications, may be pushed to public registries so that everyone can pull them. <a href="https://hub.docker.com">Docker Hub</a> is a popular service that offers both public and private registries.</p>
+</blockquote>
 
               
             </article>
