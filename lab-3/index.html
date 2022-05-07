@@ -422,9 +422,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#from-azure-portal" class="md-nav__link">
-    From Azure Portal
+  <a href="#add-role-to-acr" class="md-nav__link">
+    Add role to ACR
   </a>
+  
+    <nav class="md-nav" aria-label="Add role to ACR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-role-to-container-apps" class="md-nav__link">
+    Add role to Container Apps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -525,9 +538,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#from-azure-portal" class="md-nav__link">
-    From Azure Portal
+  <a href="#add-role-to-acr" class="md-nav__link">
+    Add role to ACR
   </a>
+  
+    <nav class="md-nav" aria-label="Add role to ACR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-role-to-container-apps" class="md-nav__link">
+    Add role to Container Apps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -593,32 +619,45 @@
 <p>The demo application will be deployed automatically using GitHub actions in this step.</p>
 <h2 id="create-a-service-principal-for-github">Create a Service Principal for GitHub<a class="headerlink" href="#create-a-service-principal-for-github" title="Permanent link">&para;</a></h2>
 <p>Instead of the main Azure account, it is recommended to create a <code>Service Principal</code>, which will be used by GitHub to connect to Azure.</p>
-<p>The following will describe the steps necessary to create that service principal, and grant it the <code>Contributor</code> role at the resource group level. This role will be inherited by all resources under the resource group.</p>
-<p>Usually, the permissions granted would be more fine-grained. For example, the service principal would instead have the <code>AcrPush</code> role in the registry itself, but granting a wide-scoped role is easier during a demo.</p>
+<p>The following will describe the steps necessary to create that service principal, and grant it roles at the Container Registry and Container Apps level.</p>
 <h3 id="from-the-terminal">From the Terminal<a class="headerlink" href="#from-the-terminal" title="Permanent link">&para;</a></h3>
 <p>Using the <code>az</code> command, create a service principal:</p>
 <div class="highlight"><pre><span></span><code>az ad sp create-for-rbac <span class="se">\</span>
-  --name <span class="s2">&quot;github-bot&quot;</span> <span class="se">\</span>
-  --role <span class="s2">&quot;contributor&quot;</span> <span class="se">\</span>
-  --scopes /subscriptions/c235daef-a49b-4feb-b432-9ea0b7cbbc6b/resourceGroups/064b73c3
+  --name <span class="s2">&quot;github-bot&quot;</span>
 </code></pre></div>
-<p>The output will contain the service principal's ID (<code>appId</code>) and its password. Take note of them.</p>
-<h3 id="from-azure-portal">From Azure Portal<a class="headerlink" href="#from-azure-portal" title="Permanent link">&para;</a></h3>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade" target="_blank">App registrations</a>, create a new registration.</p>
-<p>Then, in that service principal's Manage &gt; Certificates and secrets, create a new client secret, and take note of the generated secret value.</p>
-<p>In Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups" target="_blank">Resource groups</a>, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the <code>Contributor</code> role to the service principal created earlier.</p>
+<p>Will produce an output like this:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github-bot&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;random string&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;tenant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;tenant-id&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+The output will contain the service principal's ID (<code>appId</code>) and its password. Take note of them.</p>
+<h3 id="add-role-to-acr">Add role to ACR<a class="headerlink" href="#add-role-to-acr" title="Permanent link">&para;</a></h3>
+<p>Back in Azure Portal's [Container Registry]https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries){:target="_blank"}, select your registry and got to Access control &gt; Add &gt; Role Assignment.</p>
+<p>Choose <code>AcrPush</code> role, and, in the Member tab, select your Service Principal.</p>
+<blockquote>
+<p><strong>Note</strong>: You need to search for your Service Principal name as, by default, Azure only show you a list of Azure Active Directory members</p>
+</blockquote>
+<p><div class="video-container"><iframe src="../assets/add-acrpush-role-to-github-bot-sp.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h4 id="add-role-to-container-apps">Add role to Container Apps<a class="headerlink" href="#add-role-to-container-apps" title="Permanent link">&para;</a></h4>
+<p>Go in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps" target="_blank">Container Apps</a>, select the web app and got to Access control &gt; Add &gt; Role Assignment.</p>
+<p>This time, choose <code>Contributor</code> role, and, in the Member tab, select your Service Principal.</p>
+<p>Choose the words app and do it again.</p>
+<p><div class="video-container"><iframe src="../assets/add-contributor-role-to-container-app.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
 <h2 id="add-github-secrets">Add GitHub Secrets<a class="headerlink" href="#add-github-secrets" title="Permanent link">&para;</a></h2>
 <p>In your GitHub repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
 <ul>
-<li><code>AZURE_CLIENT_ID</code>: the Application (client) ID</li>
-<li><code>AZURE_CLIENT_SECRET</code>: the generated secret value</li>
+<li><code>AZURE_CLIENT_ID</code>: the Service Principale ID (<code>appId</code> from the previous outpu)</li>
+<li><code>AZURE_CLIENT_SECRET</code>: the Service Principale password</li>
 <li><code>AZURE_CREDENTIALS</code>: a JSON with the following value (placeholders replaced with actual values):</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Tenant ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Subscription ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principal ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principal Secret&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;tenant ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;subscription ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principale ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principale password&gt;&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;resourceManagerEndpointUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://management.azure.com/&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
