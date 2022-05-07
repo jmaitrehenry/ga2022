@@ -30,7 +30,7 @@ The output will contain the service principal's ID (`appId`) and its password. T
 
 ### Add role to ACR
 
-Back in Azure Portal's [Container Registry]https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries){:target="_blank"}, select your registry and got to Access control > Add > Role Assignment.
+Back in Azure Portal's [Container Registry](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries){:target="_blank"}, select your registry and got to Access control > Add > Role Assignment.
 
 Choose `AcrPush` role, and, in the Member tab, select your Service Principal.
 
@@ -38,15 +38,13 @@ Choose `AcrPush` role, and, in the Member tab, select your Service Principal.
 
 ![type:video](../assets/add-acrpush-role-to-github-bot-sp.mp4)
 
-#### Add role to Container Apps
+#### Add role to Ressource
 
-Go in Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps){:target="_blank"}, select the web app and got to Access control > Add > Role Assignment.
+Go in Azure Portal's [Resource Group](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups){:target="_blank"}, select the web app and got to Access control > Add > Role Assignment.
 
 This time, choose `Contributor` role, and, in the Member tab, select your Service Principal.
 
-Choose the words app and do it again.
-
-![type:video](../assets/add-contributor-role-to-container-app.mp4)
+> __Note__: Usually, you should never add the contributor role to the resource group directly, we try to give more granularity. But, actually, for Container App, we don't have other choice.
 
 ## Add GitHub Secrets
 
@@ -61,8 +59,7 @@ In your GitHub repository, go to Settings > Secrets, and add the following Actio
     "tenantId": "<tenant ID>",
     "subscriptionId": "<subscription ID>",
     "clientId": "<Service Principale ID>",
-    "clientSecret": "<Service Principale password>",
-    "resourceManagerEndpointUrl": "https://management.azure.com/"
+    "clientSecret": "<Service Principale password>"
 }
 ```
 
@@ -97,6 +94,28 @@ The changes to the GitHub workflow can now be commited and pushed to the remote 
 
 For example, you can edit the title of the page. Open the `web/static/index.html` file and change `<title>Global Azure 2022</title>` for adding your name.
 Commit and push your change and check if the web application build and deploy. Once the Github Action finish, check your application to validate the change.
+
+## Only build and deploy the application with a change
+
+It's fine to rebuild the two apps every time the repo have a change but we can do something better: only build and deploy if the code op the app was change.
+For that, duplicate the Github Action file, and rename the other one:
+
+```bash
+cp .github/workflows/azure-deploy.yml .github/workflows/azure-deploy-web.yml
+mv .github/workflows/azure-deploy.yml .github/workflows/azure-deploy-words.yml
+```
+
+Now, on each file, change the `on` block to add a path like this:
+```diff
+on:
+  push:
+    branches: 
+      - main
++   paths:
++     - 'web/**'
+```
+
+Commit the change and it's done!
 
 ## Summary
 
