@@ -6,17 +6,6 @@ Series of labs and instructions to introduce you to containers, Github Action an
 
 The goal is to deploy a frontend application and an API packaged into Docker containers, containers pushed into Azure Container Registry and deployed into Azure Container Apps automatically each time we push new change into our github repository.
 
-## Application to deploy
-
-The demo app runs across two containers:
-
-* words - a Java REST API which serves words read from a static list
-* web - a Go web application which calls the API and builds words into sentences
-
-### Run the application locally
-
-You can start the application using docker compose: `docker compose up -d` and test the application inside your browser on [localhost:8080](http://localhost:8080).
-
 ## Agenda
 
 |  |  |
@@ -45,3 +34,14 @@ For this workshop you must have:
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Github Actions](https://docs.github.com/en/actions)
 * [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/)
+
+## Application to deploy
+
+The demo app runs across two containers:
+
+* words - a Java REST API which serves words read from a static list
+* web - a Go web application which calls the API and builds words into sentences
+
+### Run the application locally
+
+You can start the application using docker compose: `docker compose up -d` and test the application inside your browser on [localhost:8080](http://localhost:8080).
