@@ -6,9 +6,7 @@ The demo application will be deployed automatically using GitHub actions in this
 
 Instead of the main Azure account, it is recommended to create a `Service Principal`, which will be used by GitHub to connect to Azure.
 
-The following will describe the steps necessary to create that service principal, and grant it the `Contributor` role at the resource group level. This role will be inherited by all resources under the resource group.
-
-Usually, the permissions granted would be more fine-grained. For example, the service principal would instead have the `AcrPush` role in the registry itself, but granting a wide-scoped role is easier during a demo.
+The following will describe the steps necessary to create that service principal, and grant it roles at the Container Registry and Container Apps level.
 
 ### From the Terminal
 
@@ -16,35 +14,54 @@ Using the `az` command, create a service principal:
 
 ```bash
 az ad sp create-for-rbac \
-  --name "github-bot" \
-  --role "contributor" \
-  --scopes /subscriptions/c235daef-a49b-4feb-b432-9ea0b7cbbc6b/resourceGroups/064b73c3
+  --name "github-bot"
 ```
 
+Will produce an output like this:
+```json
+{
+  "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "displayName": "github-bot",
+  "password": "<random string>",
+  "tenant": "<tenant-id>"
+}
+```
 The output will contain the service principal's ID (`appId`) and its password. Take note of them.
 
-### From Azure Portal
+### Add role to ACR
 
-In Azure Portal's [App registrations](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade){:target="_blank"}, create a new registration.
+Back in Azure Portal's [Container Registry]https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.ContainerRegistry%2Fregistries){:target="_blank"}, select your registry and got to Access control > Add > Role Assignment.
 
-Then, in that service principal's Manage > Certificates and secrets, create a new client secret, and take note of the generated secret value.
+Choose `AcrPush` role, and, in the Member tab, select your Service Principal.
 
-In Azure Portal's [Resource groups](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups){:target="_blank"}, select the resource group used for this demo. In Access Control (IAM), add a new role assignment with the `Contributor` role to the service principal created earlier.
+> __Note__: You need to search for your Service Principal name as, by default, Azure only show you a list of Azure Active Directory members
+
+![type:video](../assets/add-acrpush-role-to-github-bot-sp.mp4)
+
+#### Add role to Container Apps
+
+Go in Azure Portal's [Container Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps){:target="_blank"}, select the web app and got to Access control > Add > Role Assignment.
+
+This time, choose `Contributor` role, and, in the Member tab, select your Service Principal.
+
+Choose the words app and do it again.
+
+![type:video](../assets/add-contributor-role-to-container-app.mp4)
 
 ## Add GitHub Secrets
 
 In your GitHub repository, go to Settings > Secrets, and add the following Action secrets:
 
-* `AZURE_CLIENT_ID`: the Application (client) ID
-* `AZURE_CLIENT_SECRET`: the generated secret value
+* `AZURE_CLIENT_ID`: the Service Principale ID (`appId` from the previous outpu)
+* `AZURE_CLIENT_SECRET`: the Service Principale password
 * `AZURE_CREDENTIALS`: a JSON with the following value (placeholders replaced with actual values):
 
 ```json
 {
-    "tenantId": "<Tenant ID>",
-    "subscriptionId": "<Subscription ID>",
-    "clientId": "<Service Principal ID>",
-    "clientSecret": "<Service Principal Secret>",
+    "tenantId": "<tenant ID>",
+    "subscriptionId": "<subscription ID>",
+    "clientId": "<Service Principale ID>",
+    "clientSecret": "<Service Principale password>",
     "resourceManagerEndpointUrl": "https://management.azure.com/"
 }
 ```

@@ -44,6 +44,7 @@ theme:
 
 plugins:
   - search
+  - mkdocs-video
 
 extra:
   social:
