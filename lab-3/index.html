@@ -430,8 +430,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-role-to-container-apps" class="md-nav__link">
-    Add role to Container Apps
+  <a href="#add-role-to-ressource" class="md-nav__link">
+    Add role to Ressource
   </a>
   
 </li>
@@ -546,8 +546,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-role-to-container-apps" class="md-nav__link">
-    Add role to Container Apps
+  <a href="#add-role-to-ressource" class="md-nav__link">
+    Add role to Ressource
   </a>
   
 </li>
@@ -641,11 +641,12 @@ The output will contain the service principal's ID (<code>appId</code>) and its 
 <p><strong>Note</strong>: You need to search for your Service Principal name as, by default, Azure only show you a list of Azure Active Directory members</p>
 </blockquote>
 <p><div class="video-container"><iframe src="../assets/add-acrpush-role-to-github-bot-sp.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
-<h4 id="add-role-to-container-apps">Add role to Container Apps<a class="headerlink" href="#add-role-to-container-apps" title="Permanent link">&para;</a></h4>
-<p>Go in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.App%2FcontainerApps" target="_blank">Container Apps</a>, select the web app and got to Access control &gt; Add &gt; Role Assignment.</p>
+<h4 id="add-role-to-ressource">Add role to Ressource<a class="headerlink" href="#add-role-to-ressource" title="Permanent link">&para;</a></h4>
+<p>Go in Azure Portal's <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups" target="_blank">Resource Group</a>, select the web app and got to Access control &gt; Add &gt; Role Assignment.</p>
 <p>This time, choose <code>Contributor</code> role, and, in the Member tab, select your Service Principal.</p>
-<p>Choose the words app and do it again.</p>
-<p><div class="video-container"><iframe src="../assets/add-contributor-role-to-container-app.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<blockquote>
+<p><strong>Note</strong>: Usually, you should never add the contributor role to the resource group directly, we try to give more granularity. But, actually, for Container App, we don't have other choice.</p>
+</blockquote>
 <h2 id="add-github-secrets">Add GitHub Secrets<a class="headerlink" href="#add-github-secrets" title="Permanent link">&para;</a></h2>
 <p>In your GitHub repository, go to Settings &gt; Secrets, and add the following Action secrets:</p>
 <ul>
@@ -657,8 +658,7 @@ The output will contain the service principal's ID (<code>appId</code>) and its 
 <span class="w">    </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;tenant ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;subscription ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principale ID&gt;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principale password&gt;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;resourceManagerEndpointUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://management.azure.com/&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Service Principale password&gt;&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>While you are in the GitHub interface, visit the Actions section. If prompted, enable GitHub workflows, otherwise the next step will not trigger any actions.</p>
