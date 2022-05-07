@@ -53,7 +53,7 @@ While you are in the GitHub interface, visit the Actions section. If prompted, e
 
 ## Add Github Actions
 
-The `.github/workflows/azure-deploy.yml` file contains the GitHub workflow that is triggered when the `main` branch is pushed.
+The `azure-deploy.yml` file contains the GitHub workflow that is triggered when the `main` branch is pushed.
 
 Fill the `jobs.deploy.env` variables with their respective values:
 
@@ -62,9 +62,24 @@ Fill the `jobs.deploy.env` variables with their respective values:
 * `AZURE_APP_NAME_WORDS`: The container app's name for the Words application
 * `AZURE_APP_NAME_WEB`: The container app's name for the Web application
 
+Now, create a directory for the Github Action:
+```bash
+mkdir -p .github/workflows
+```
+
+And copy or move the github action into it:
+```bash
+mv azure-deploy.yml .github/workflows/
+```
+
 ## Push GitHub Workflow
 
-The changes to the GitHub workflow can now be pushed to the remote repository. The workflow should start automatically, and can be found in the Actions section.
+The changes to the GitHub workflow can now be commited and pushed to the remote repository. The workflow should start automatically, and can be found in the Actions section.
+
+## Make a change in the web application
+
+For example, you can edit the title of the page. Open the `web/static/index.html` file and change `<title>Global Azure 2022</title>` for adding your name.
+Commit and push your change and check if the web application build and deploy. Once the Github Action finish, check your application to validate the change.
 
 ## Summary
 
