@@ -475,6 +475,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#only-build-and-deploy-the-application-with-a-change" class="md-nav__link">
+    Only build and deploy the application with a change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -591,6 +598,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#only-build-and-deploy-the-application-with-a-change" class="md-nav__link">
+    Only build and deploy the application with a change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -682,6 +696,21 @@ The output will contain the service principal's ID (<code>appId</code>) and its 
 <h2 id="make-a-change-in-the-web-application">Make a change in the web application<a class="headerlink" href="#make-a-change-in-the-web-application" title="Permanent link">&para;</a></h2>
 <p>For example, you can edit the title of the page. Open the <code>web/static/index.html</code> file and change <code>&lt;title&gt;Global Azure 2022&lt;/title&gt;</code> for adding your name.
 Commit and push your change and check if the web application build and deploy. Once the Github Action finish, check your application to validate the change.</p>
+<h2 id="only-build-and-deploy-the-application-with-a-change">Only build and deploy the application with a change<a class="headerlink" href="#only-build-and-deploy-the-application-with-a-change" title="Permanent link">&para;</a></h2>
+<p>It's fine to rebuild the two apps every time the repo have a change but we can do something better: only build and deploy if the code op the app was change.
+For that, duplicate the Github Action file, and rename the other one:</p>
+<div class="highlight"><pre><span></span><code>cp .github/workflows/azure-deploy.yml .github/workflows/azure-deploy-web.yml
+mv .github/workflows/azure-deploy.yml .github/workflows/azure-deploy-words.yml
+</code></pre></div>
+<p>Now, on each file, change the <code>on</code> block to add a path like this:
+<div class="highlight"><pre><span></span><code><span class="w">on:</span>
+<span class="w"> </span> push:<span class="w"></span>
+<span class="w"> </span>   branches: <span class="w"></span>
+<span class="w"> </span>     - main<span class="w"></span>
+<span class="gi">+   paths:</span><span class="w"></span>
+<span class="gi">+     - &#39;web/**&#39;</span><span class="w"></span>
+</code></pre></div></p>
+<p>Commit the change and it's done!</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>We created a limited account that could interact with our docker registry and our container applications. After that, we built and deployed our application only when they have some changes.</p>
 <p>You have now a full Continuous Deployment Pipeline running into Github!</p>
